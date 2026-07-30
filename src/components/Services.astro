@@ -1,0 +1,204 @@
+---
+interface Service {
+  icon: string;
+  title: string;
+  description: string;
+  features: string[];
+}
+
+const services: Service[] = [
+  {
+    icon: '\u{1F4F7}',
+    title: 'Gestión de Redes Sociales',
+    description: 'Creamos, gestionamos y optimizamos tus perfiles sociales para conectar con tu audiencia y generar engagement real.',
+    features: ['Creación de contenido', 'Calendario editorial', 'Community management', 'Análisis de métricas'],
+  },
+  {
+    icon: '\u{1F50D}',
+    title: 'SEO y Posicionamiento Web',
+    description: 'Posicionamos tu web en los primeros resultados de Google con estrategias SEO que atraen tráfico cualificado.',
+    features: ['SEO técnico y on-page', 'Investigación de keywords', 'Link building', 'Informes mensuales'],
+  },
+  {
+    icon: '\u{1F4E7}',
+    title: 'Email Marketing',
+    description: 'Diseñamos campañas de email que convierten. Automatizaciones, newsletters y secuencias que fidelizan.',
+    features: ['Newsletters personalizadas', 'Automatizaciones', 'Segmentación avanzada', 'Pruebas A/B'],
+  },
+  {
+    icon: '\u{1F3A8}',
+    title: 'Diseño Web y Branding',
+    description: 'Creamos webs modernas y rápidas que reflejan la identidad de tu marca y convierten visitas en clientes.',
+    features: ['Diseño web responsive', 'Identidad visual', 'UX/UI optimizado', 'Landing pages de alto impacto'],
+  },
+];
+---
+
+<section class="services" id="servicios">
+  <div class="container">
+    <div class="services-header">
+      <span class="section-badge">Servicios</span>
+      <h2 class="section-title">Soluciones digitales <span class="text-gradient">a medida</span></h2>
+      <p class="section-subtitle">
+        Combinamos creatividad y datos para ofrecerte estrategias de marketing digital que impulsan resultados.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {
+        services.map((service, index) => (
+          <article class="service-card" style={`--delay: ${index * 0.1}s`}>
+            <div class="service-icon">{service.icon}</div>
+            <h3 class="service-title">{service.title}</h3>
+            <p class="service-desc">{service.description}</p>
+            <ul class="service-features">
+              {service.features.map((feature) => (
+                <li class="service-feature">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    position: relative;
+    padding: 5rem 0;
+    margin-bottom: 2rem;
+  }
+
+  .services-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: rgba(108, 92, 231, 0.08);
+    color: var(--color-primary);
+    border-radius: var(--radius-lg);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    margin-bottom: 1rem;
+  }
+
+  .text-gradient {
+    background: var(--color-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-subtitle {
+    color: var(--color-text-muted);
+    font-size: 1.125rem;
+    max-width: 550px;
+    margin: 0 auto;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    transition: all 0.35s ease;
+    animation: fadeInUp 0.6s ease both;
+    animation-delay: var(--delay);
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+  }
+
+  .service-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    background: var(--color-gradient);
+    border-radius: var(--radius-md);
+    margin-bottom: 1.25rem;
+  }
+
+  .service-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-desc {
+    color: var(--color-text-muted);
+    font-size: 0.925rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+
+  .service-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1.25rem;
+  }
+
+  .service-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .services {
+      padding: 3rem 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .service-card {
+      padding: 1.5rem;
+    }
+  }
+</style>
